@@ -8,102 +8,266 @@ using namespace std;
 
 int length(string s)
 {
-   return 0;
+   int i = 0;
+   while(s[i]!='\0')
+   {
+      i++;
+   }
+   return i;
 }
 
 int charCount(string s,char c)
 {
+   int count = 0;
+   int len = length(s);
+   for(int i = 0 ; i< len; i++)
+   {
+      if(s[i]==c){
+         count ++;
+      }
+   }
    return 0;
 }
 
 string substring(string s,int d,int h)
 {
-   return "";
+   string resultado = "";
+   for(int i=d ; i<h ;i++)
+   {
+      resultado = resultado + s[i];
+   }
+   return resultado;
 }
 
-string substring(string s,int d) // ok
+string substring(string s,int d)
 {
-   return "";
+   int i = d;
+   string resultado = "";
+   while(s[i]!='\0')
+   {
+      resultado += s[i];
+      i++;
+   }
+   return resultado;
 }
 
-int indexOf(string s,char c) // ok
+int indexOf(string s,char c)
 {
-   return 0;
+   int i = 0;
+   while(s[i]!='\0')
+   {
+      if(s[i]==c){
+         return i;
+      }
+      i++;
+   }
+   return -1;
 }
 
-int indexOf(string s,char c,int offSet) // ok
+int indexOf(string s,char c,int offSet)
 {
-   return 0;
+   int i = offSet;
+   while(s[i]!='\0')
+   {
+      if(s[i]==c)
+      {
+         return i;
+      }
+      i++;
+   }
+   return -1;
 }
 
-int indexOf(string s,string toSearch) // ok
+int indexOf(string s,string toSearch)
 {
-   return 0;
+   int i = 0;
+   int z = 0;
+   int len = length(toSearch);
+   while(s[i]!='\0')
+   {
+      while(toSearch[z]!='\0')
+      {
+         if(s[i]!=toSearch[z])
+         {
+            i-=z;
+            z=0;
+            break;
+         }
+         i++;
+         z++;
+      }
+      if(toSearch[z]=='\0'){
+         return i-len;
+      }
+      i++;
+   }
+   return -1;
 }
 
-int indexOf(string s,string toSearch,int offset) // ok
+int indexOf(string s,string toSearch,int offset)
 {
-   return 0;
+   int i = offset;
+   int z = 0;
+   int len = length(toSearch);
+   while(s[i]!='\0')
+   {
+      while(toSearch[z]!='\0')
+      {
+         if(s[i]!=toSearch[z])
+         {
+            i-=z;
+            z=0;
+            break;
+         }
+         i++;
+         z++;
+      }
+      if(toSearch[z]=='\0'){
+         return i-len;
+      }
+      i++;
+   }
+   return -1;
 }
 
 int lastIndexOf(string s,char c)
 {
-   return 0;
+   int i = 0;
+   int len = length(s);
+   while(s[i]!='\0')
+   {
+      if(s[len-i-1]==c){
+         return len - i -1;
+      }
+      i++;
+   }
+   return -1;
 }
 
 int indexOfN(string s,char c,int n)
 {
-   return 0;
+   int i = 0;
+   int cont = 0;
+   while(s[i]!='\0')
+   {
+      if(s[i]==c){
+         cont++;
+         if(cont==n)
+         {
+            return i;
+         }
+      }
+      i++;
+   }
+   return -1;
 }
 
-int charToInt(char c)
-{
-   return 0;
+int charToInt(char c) {
+    if (c >= '0' && c <= '9') return c - '0';
+    else if (c >= 'A' && c <= 'Z') return c - 'A' + 10;
+    else if (c >= 'a' && c <= 'z') return c - 'a' + 10;
+    else return -1;
 }
 
 char intToChar(int i)
 {
-   return 'X';
+   if (i >= 0 && i <= 9) return (char)(i + '0');
+   else if (i >= 10 && i <= 35) return (char)(i + 'A' - 10);
+   else return '?';
 }
 
 int getDigit(int n,int i)
 {
-   return 0;
+   int resultado = n;
+   int dividendo = 1;
+   if(i > 0)
+   {
+      for(int z = 0; z < i; z++)
+      {
+         dividendo*=10;
+      }
+      resultado = n / dividendo;
+   }
+   return resultado%10;
 }
 
 int digitCount(int n)
 {
-   return 0;
+   int count = 0;
+   while(n>0)
+   {
+      count++;
+      n/=10;
+   }
+   return count;
 }
 
 string intToString(int i)
 {
-   return "";
+   string resultado = "";
+   int digit = 0;
+   while(i>0)
+   {
+      digit = i%10;
+      resultado = intToChar(digit) + resultado;
+      i/=10;
+   }
+   return resultado;
 }
 
 int stringToInt(string s,int b) // ok
 {
-   return 0;
+   int len = length(s);
+   int resultado = 0;
+   int potencia = 1;
+
+   for(int z = 0; z < len-1; z++)
+   {
+      potencia*=b;
+   }
+
+   for(int i = 0; i < len ; i++)
+   {
+      resultado += charToInt((char)s[i]) * potencia ;
+      potencia /=b;
+   }
+   return resultado;
 }
 
 int stringToInt(string s) // ok
 {
-   return 0;
+   int len = length(s);
+      int resultado = 0;
+      int potencia = 1;
+
+      for(int z = 0; z < len-1; z++)
+      {
+         potencia*=10;
+      }
+
+      for(int i = 0; i < len ; i++)
+      {
+         resultado += charToInt((char)s[i]) * potencia ;
+         potencia /=10;
+      }
+      return resultado;
 }
 
 string charToString(char c)
 {
-   return "";
+   string resultado = "";
+   resultado += c;
+   return resultado;
 }
 
 char stringToChar(string s)
 {
-   return 'X';
+   return (char)s[0];
 }
 
 string stringToString(string s)
 {
-   return "";
+   return s;
 }
 
 string doubleToString(double d)
