@@ -329,72 +329,150 @@ bool isEmpty(string s)
 
 bool startsWith(string s,string x)
 {
+   int len = length(x);
+   for(int i = 0; i < len ; i++)
+   {
+      if(s[i]!=x[i])
+      {
+         return false;
+      }
+   }
    return true;
 }
 
 bool endsWith(string s,string x)
 {
+   int lenS = length(s);
+   int lenX = length(x);
+
+   for(int i = 0; i < lenX ; i++)
+   {
+      if(s[lenS-1-i] != x[lenX -1 -i])
+      {
+         return false;
+      }
+   }
    return true;
 }
 
 bool contains(string s,char c)
 {
-   return true;
+   int len = length(s);
+   for(int i = 0; i<len ; i++)
+   {
+      if(s[i]==c)
+      {
+         return true;
+      }
+   }
+   return false;
 }
 
 string replace(string s,char oldChar,char newChar)
 {
-   return "";
+   int len = length(s);
+      for(int i = 0; i<len ; i++)
+      {
+         if(s[i]==oldChar)
+         {
+            s[i]=newChar;
+         }
+      }
+      return s;
 }
 
 string insertAt(string s,int pos,char c)
 {
-   return "";
+   string ladoIzquierdo = substring(s,0,pos);
+   string ladoDerecho = substring(s,pos);
+   return ladoIzquierdo + c + ladoDerecho;
 }
 
 string removeAt(string s,int pos)
 {
-   return "";
+   string ladoIzquierdo = substring(s,0,pos);
+   string ladoDerecho = substring(s,pos+1);
+   return ladoIzquierdo + ladoDerecho;
 }
 
 string ltrim(string s)
 {
-   return "";
+   int i = 0;
+   while(s[i]==' ')
+   {
+      i++;
+   }
+   string resultado = substring(s,i);
+   return resultado;
 }
 
 string rtrim(string s)
 {
-   return "";
+   int len = length(s);
+   cout << len << endl;
+   int i = 0;
+   while(s[len-i-1] == ' ')
+   {
+      i++;
+   }
+   string resultado = substring(s,0,len-i);
+   return resultado;
 }
 
 string trim(string s)
 {
-   return "";
+   string resultado = "";
+   resultado = ltrim(s);
+   resultado = rtrim(resultado);
+   return resultado;
 }
 
 string replicate(char c,int n)
 {
-   return "";
+   string resultado = "";
+   for(int i = 0; i < n ; i++)
+   {
+      resultado += c;
+   }
+   return resultado;
 }
 
 string spaces(int n)
 {
-   return "";
+   string resultado = "";
+      for(int i = 0; i < n ; i++)
+      {
+         resultado += ' ';
+      }
+      return resultado;
 }
 
 string lpad(string s,int n,char c)
 {
-   return "";
+   int lenS = length(s);
+   string relleno = replicate(c,n-lenS);
+   return relleno + s;
 }
 
 string rpad(string s,int n,char c)
 {
-   return "";
+   int lenS = length(s);
+   string relleno = replicate(c,n-lenS);
+   return s + relleno;
 }
 
 string cpad(string s,int n,char c)
 {
-   return "";
+   int lenS = length(s);
+   //para lado izquierdo
+   int cantRelleno = (n-lenS)/2;
+   string izquierda = replicate(c,cantRelleno);
+
+   //para lado derecho
+   cantRelleno = (n-lenS) - cantRelleno;
+   string derecha = replicate(c,cantRelleno);
+
+   return izquierda + s + derecha ;
 }
 
 bool isDigit(char c)

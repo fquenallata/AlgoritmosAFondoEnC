@@ -17,11 +17,11 @@ using namespace std;
 
 int main()
 {
-   double d = 123.456;
-   string s = doubleToString(d);
-   cout << doubleToString(0.123456) << endl;
-       cout << doubleToString(123.456789) << endl;
-   cout << s << endl; // muestra: 123.4
-   return 0;
+
+   string s = "Hola";
+   int n = 11;
+   char c = 'X';
+   string r = cpad(s,n,c);
+   cout << "[" << r << "]" << endl; // muestra: [XXXHolaXXX]
 }
 #endif
