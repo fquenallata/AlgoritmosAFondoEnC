@@ -17,14 +17,11 @@ using namespace std;
 
 int main()
 {
-   string s = "A";
-   char c = stringToChar(s);
-   cout << c << endl; // muestra: A
-   cout << (int)c << endl; // muestra: 65
-   s = " ";
-   c = stringToChar(s);
-   cout << c << endl; // muestra: [VACIO]
-   cout << (int)c << endl; // muestra: 32, ASCII de ' '
+   double d = 123.456;
+   string s = doubleToString(d);
+   cout << doubleToString(0.123456) << endl;
+       cout << doubleToString(123.456789) << endl;
+   cout << s << endl; // muestra: 123.4
    return 0;
 }
 #endif

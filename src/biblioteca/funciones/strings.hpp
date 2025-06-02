@@ -272,17 +272,59 @@ string stringToString(string s)
 
 string doubleToString(double d)
 {
-   return "";
+   int ladoIzquierdo = d;
+   double ladoDerecho = d - (int)d;
+   string resultado = "";
+   if (ladoIzquierdo == 0)
+      resultado = "0";
+   else {
+      while(ladoIzquierdo!=0)
+      {
+         resultado = intToChar(ladoIzquierdo%10) + resultado;
+         ladoIzquierdo = ladoIzquierdo/10;
+      }
+   }
+   resultado += '.';
+
+   int maxDecimales = 6;
+      while (ladoDerecho > 0 && maxDecimales--)
+      {
+          ladoDerecho *= 10;
+          int digit = (int)ladoDerecho;
+          resultado += intToChar(digit);
+          ladoDerecho -= digit;
+      }
+
+      return resultado;
 }
 
 double stringToDouble(string s)
 {
-   return 1.1;
+   double entera = 0;
+   int i = 0;
+   while(s[i]!='.')
+   {
+
+      entera *= 10;
+      entera += charToInt((char)s[i]);
+      i++;
+   }
+   i++;
+   int corrimiento = 1;
+   double decimales = 0;
+   while(s[i]!='\0')
+   {
+      corrimiento *= 10;
+      decimales = decimales + (double)charToInt((char)s[i])/corrimiento;
+      i++;
+   }
+
+   return (entera+decimales);
 }
 
 bool isEmpty(string s)
 {
-   return true;
+   return length(s)? 0 : 1;
 }
 
 bool startsWith(string s,string x)
