@@ -477,52 +477,86 @@ string cpad(string s,int n,char c)
 
 bool isDigit(char c)
 {
-   return true;
+   if (c >= '0' && c <= '9') return true;
+   return false;
 }
 
 bool isLetter(char c)
 {
-   return true;
+   if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+   {
+      return true;
+   }
+   return false;
 }
 
 bool isUpperCase(char c)
 {
-   return true;
+   if(c >= 'A' && c <= 'Z') return true;
+   return false;
 }
 
 bool isLowerCase(char c)
 {
-   return true;
+   if(c >= 'a' && c <= 'z') return true;
+   return false;
 }
 
 char toUpperCase(char c)
 {
-   return 'X';
+   if(c >= '0' && c <= '9') return c;
+   if(c >= 'A' && c <= 'Z') return c;
+   if(c >= 'a' && c <= 'z') return (c - 32);
+   return '?';
 }
 
 char toLowerCase(char c)
 {
-   return 'X';
+   if(c >= '0' && c <= '9') return c;
+   if(c >= 'a' && c <= 'z') return c;
+   if(c >= 'A' && c <= 'Z') return (c + 32);
+   return '?';
 }
 
 string toUpperCase(string s)
 {
-   return "";
+   int len = length(s);
+   for(int i = 0; i<len; i++)
+   {
+      if(s[i] >= 'a' && s[i] <= 'z')
+      {
+         s[i] -= 32;
+      }
+   }
+   return s;
 }
 
 string toLowerCase(string s)
 {
-   return "";
+   int len = length(s);
+   for(int i = 0; i<len; i++)
+   {
+      if(s[i] >= 'A' && s[i] <= 'Z')
+      {
+         s[i] += 32;
+      }
+   }
+   return s;
 }
 
 int cmpString(string a,string b)
 {
-   return 0;
+   int i = 0;
+   while(a[i]!='\0' && b[i]!='\0' && a[i]==b[i])
+   {
+      i++;
+   }
+   return a[i]-b[i];
 }
 
 int cmpDouble(double a,double b)
 {
-   return 0;
+   return (int)(a-b);
 }
 
 #endif

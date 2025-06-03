@@ -17,11 +17,8 @@ using namespace std;
 
 int main()
 {
-
-   string s = "Hola";
-   int n = 11;
-   char c = 'X';
-   string r = cpad(s,n,c);
-   cout << "[" << r << "]" << endl; // muestra: [XXXHolaXXX]
+   int x = 2;
+   int y = 2;
+   cout << x+y;
 }
 #endif
