@@ -26,7 +26,7 @@ int charCount(string s,char c)
          count ++;
       }
    }
-   return 0;
+   return count;
 }
 
 string substring(string s,int d,int h)

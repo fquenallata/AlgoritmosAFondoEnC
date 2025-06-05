@@ -17,8 +17,16 @@ using namespace std;
 
 int main()
 {
-   int x = 2;
-   int y = 2;
-   cout << x+y;
+   string s = "";
+   char sep = '|';
+   addToken(s,sep,"John");
+   cout << s << endl; // Salida: John
+   addToken(s,sep,"Paul");
+   cout << s << endl; // Salida: John|Paul
+   addToken(s,sep,"George");
+   cout << s << endl; // Salida: John|Paul|George
+   addToken(s,sep,"Ringo");
+   cout << s << endl; // Salida: John|Paul|George|Ringo
+   return 0;
 }
 #endif

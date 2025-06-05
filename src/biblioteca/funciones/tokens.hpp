@@ -8,15 +8,30 @@ using namespace std;
 
 int tokenCount(string s,char sep)
 {
-   return 0;
+   if(isEmpty(s)){
+      return 0;
+   }
+   int resultado = charCount(s,sep) + 1;
+   return resultado;
 }
 
 void addToken(string& s,char sep,string t)
 {
+   if(isEmpty(t)) return;
+
+   if(isEmpty(s)){
+      s = t;
+   }
+   else
+   {
+      s += sep + t;
+   }
 }
 
 string getTokenAt(string s,char sep, int i)
 {
+
+   int posFin;
    return "";
 }
 
