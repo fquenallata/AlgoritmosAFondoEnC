@@ -142,7 +142,7 @@ int findToken(string s, char sep, string t)
         string token;
 
         if (end == -1)
-            token = substring(s, start);  // último token
+            token = substring(s, start);
         else
             token = substring(s, start, end);
 
@@ -153,7 +153,6 @@ int findToken(string s, char sep, string t)
         start = end + 1;
         count++;
     }
-
     return -1;
 }
 
